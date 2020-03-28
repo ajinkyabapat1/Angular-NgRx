@@ -1,16 +1,31 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CustomerComponent } from './customer/customer.component';
-import { CustomerAddComponent } from './customer-add/customer-add.component';
-import { CustomerEditComponent } from './customer-edit/customer-edit.component';
-import { CustomerListComponent } from './customer-list/customer-list.component';
-
-
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { CustomerComponent } from "./customer/customer.component";
+import { CustomerAddComponent } from "./customer-add/customer-add.component";
+import { CustomerEditComponent } from "./customer-edit/customer-edit.component";
+import { CustomerListComponent } from "./customer-list/customer-list.component";
+import { Routes, RouterModule } from "@angular/router";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+const customerRoute: Routes = [
+  { path: "", component: CustomerComponent },
+  {
+    path: "edit",
+    component: CustomerEditComponent
+  }
+];
 
 @NgModule({
-  declarations: [CustomerComponent, CustomerAddComponent, CustomerEditComponent, CustomerListComponent],
+  declarations: [
+    CustomerComponent,
+    CustomerAddComponent,
+    CustomerEditComponent,
+    CustomerListComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild(customerRoute),
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
-export class CustomersModule { }
+export class CustomersModule {}
